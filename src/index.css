@@ -1,9 +1,21 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
 @font-face {
     font-family: "Helvetica Neue";
     src: url("./static/fonts/HelveticaNeueLt.ttf");
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: "Helvetica Neue";
     src: url("./static/fonts/HelveticaNeueBd.ttf");
@@ -18,6 +30,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+html,
+body,
+#root {
+    height: 100%;
+}
+
+img,
+svg {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
