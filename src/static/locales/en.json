@@ -1,5 +1,6 @@
 {
     "common": {
-        "results": "results"
+        "results": "results",
+        "mails": "mail(s)"
     }
 }

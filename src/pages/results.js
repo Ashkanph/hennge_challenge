@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import SearchBar from "../components/results/searchBar";
+import ResultsContainer from "../components/results/resultsContainer";
 
 const ResultsEl = styled.div`
     width: 100%;
@@ -22,6 +23,7 @@ export default function Results() {
                 rangeChanged={setDateRange}
                 defaultDateRange={[epochToDate(dateRange[0]), epochToDate(dateRange[1])]}
             />
+            <ResultsContainer dateRange={dateRange} />
         </ResultsEl>
     );
 }
