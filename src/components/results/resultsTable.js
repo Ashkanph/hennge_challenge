@@ -18,7 +18,7 @@ const ResultsTableEl = styled.div`
         .mail-info {
             font-size: 21px;
             display: grid;
-            grid-template-columns: 200px 200px auto 130px;
+            grid-template-columns: 208px 370px auto 130px;
             height: 50px;
             align-items: center;
             color: ${props => props.theme.onBackground};
@@ -42,6 +42,40 @@ const ResultsTableEl = styled.div`
                 .sort-arrow-asc {
                     transform: scaleY(-1);
                 }
+            }
+
+            .to {
+                display: flex;
+
+                .first-to {
+                    max-width: 278px;
+                }
+
+                .to-count {
+                    display: flex;
+                    flex-grow: 1;
+                    justify-content: flex-end;
+                    padding-right: 20px;
+
+                    span {
+                        color: ${props => props.theme.background};
+                        background-color: ${props => props.theme.tags};
+                        width: 32px;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        display: block;
+                        text-align: center;
+                        height: 25px;
+                        font-size: 19px;
+                    }
+                }
+            }
+
+            .from,
+            .to,
+            .subject,
+            .date {
+                padding-right: 30px;
             }
         }
     }
@@ -97,9 +131,18 @@ export default function ResultsTable(props) {
                     <div className="mail" key={`result-table-row-${index}`}>
                         <div className="mail-info">
                             <span className="from text-truncate">{item?.from}</span>
-                            <span className="to text-truncate">
-                                {item?.to.join(", ")}
-                            </span>
+                            <div className="to">
+                                <span className="first-to text-truncate">
+                                    {`${item?.to?.[0]} ${
+                                        item.to.length > 1 ? ", ..." : ""
+                                    }`}
+                                </span>
+                                {item.to.length > 1 && (
+                                    <div className="to-count">
+                                        <span>+{item.to.length - 1}</span>
+                                    </div>
+                                )}
+                            </div>
                             <span className="subject text-truncate">{item?.subject}</span>
                             <span className="date text-bold">
                                 {formatDateTime(item?.date * 1000)}

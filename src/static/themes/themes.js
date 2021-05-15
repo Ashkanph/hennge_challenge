@@ -6,6 +6,7 @@ const themes = {
         resultBorder: "#dedede",
         surface: "#f6f6f6",
         resultsText: "#666666",
+        tags: "#888888",
     },
 };
 
