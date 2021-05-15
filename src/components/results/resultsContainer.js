@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import ResultsCount from "./resultsCount";
 import LogoContainer from "./logoContainer";
+import resultsMockData from "../../static/mockData";
+import ResultsTable from "./resultsTable";
 
 const ResultsContainerEl = styled.div`
     width: inherit;
@@ -26,13 +28,20 @@ const ResultsContainerEl = styled.div`
     }
 `;
 
-export default function ResultsContainer(_props) {
-    const count = useMemo(() => 10, []);
+export default function ResultsContainer(props) {
+    const { dateRange } = props;
+    const filteredSortedData = useMemo(() => {
+        return resultsMockData
+            .filter(item => item.date <= dateRange[1] && item.date >= dateRange[0])
+            .sort((a, b) => a?.date < b?.date);
+    }, [dateRange]);
+    const count = useMemo(() => filteredSortedData.length, [filteredSortedData]);
 
     return (
         <ResultsContainerEl>
             <ResultsCount count={count} />
             <LogoContainer count={count} />
+            <ResultsTable data={filteredSortedData} />
         </ResultsContainerEl>
     );
 }

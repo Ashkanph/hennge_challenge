@@ -1,6 +1,10 @@
 {
     "common": {
         "results": "results",
-        "mails": "mail(s)"
+        "mails": "mail(s)",
+        "from": "from",
+        "to": "to",
+        "subject": "subject",
+        "date": "date"
     }
 }

@@ -1,7 +1,7 @@
 const themes = {
     light: {
         background: `#fff`,
-        onBackground: `#000`,
+        onBackground: `#333`,
         calendarBorder: "#d0d0d0",
         resultBorder: "#dedede",
         surface: "#f6f6f6",

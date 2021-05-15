@@ -19,6 +19,7 @@ const SearchBarEl = styled.div`
             height: inherit;
             padding: 0 22px;
             border: 1px solid ${props => props.theme.calendarBorder};
+            color: ${props => props.theme.onBackground};
             border-right: none;
             border-top-left-radius: 8px;
             border-bottom-left-radius: 8px;
@@ -59,9 +60,33 @@ export default function SearchBar(props) {
     const [selectedRange, setSelectedRange] = useState(defaultDateRange);
     const dateToEpoch = d => Math.floor(new Date(d).getTime() / 1000);
 
+    const twoDateAreEqual = (d1, d2) => {
+        const firstDate = new Date(d1);
+        const secondDate = new Date(d2);
+        return (
+            firstDate.getFullYear() === secondDate.getFullYear() &&
+            firstDate.getMonth() === secondDate.getMonth() &&
+            firstDate.getDate() === secondDate.getDate()
+        );
+    };
+
+    const getDateString = (d, which) => {
+        const date = new Date(d);
+        return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${
+            which === "first" ? "00:01" : "23:59"
+        }`;
+    };
+
     const onRangeChanged = newRange => {
         setSelectedRange(newRange);
-        rangeChanged([dateToEpoch(newRange[0]), dateToEpoch(newRange[1])]);
+        if (twoDateAreEqual(newRange[0], newRange[1])) {
+            rangeChanged([dateToEpoch(newRange[0]), dateToEpoch(newRange[0])]);
+        } else {
+            rangeChanged([
+                dateToEpoch(getDateString(newRange[0], "first")),
+                dateToEpoch(getDateString(newRange[1], "second")),
+            ]);
+        }
     };
 
     return (

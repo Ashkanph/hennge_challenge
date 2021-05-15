@@ -13,8 +13,10 @@ const ResultsEl = styled.div`
 `;
 
 export default function Results() {
-    const currentEpochTime = () => Math.floor(new Date().getTime() / 1000);
-    const [dateRange, setDateRange] = useState(new Array(2).fill(currentEpochTime()));
+    const [dateRange, setDateRange] = useState([
+        new Date("2019/12/31 00:01").getTime() / 1000,
+        new Date("2020/1/3 23:59").getTime() / 1000,
+    ]);
     const epochToDate = et => new Date(et * 1000);
 
     return (
