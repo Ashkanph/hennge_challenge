@@ -7,6 +7,7 @@ const themes = {
         surface: "#f6f6f6",
         resultsText: "#666666",
         tags: "#888888",
+        links: "#2c61dc",
     },
 };
 

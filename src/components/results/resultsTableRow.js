@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { formatDateTime } from "../../helpers/date";
+import ClipIcon from "../../components/icons/clip";
 
 const ResultsTableRowEl = styled.div`
     &.showbody {
@@ -66,26 +67,44 @@ const ResultsTableRowEl = styled.div`
         }
     }
 
+    .subject {
+        .subject-text {
+            display: inline-block;
+            width: calc(100% - 40px);
+        }
+
+        .clip-icon {
+            float: right;
+        }
+    }
+
     &:hover {
         .from,
         .to,
-        .subject,
-        .date {
-            color: blue;
+        .subject {
+            color: ${props => props.theme.links};
+
+            svg {
+                fill: ${props => props.theme.links} !important;
+            }
         }
     }
 `;
 
 export default function ResultsTableRow(props) {
-    const { className, item, key } = props;
+    const { className, item, sortedBy } = props;
     const [showBody, setShowBody] = useState(false);
 
     return (
         <ResultsTableRowEl
             className={`${className} ${showBody ? "showbody" : ""}`}
-            key={key}
             onClick={() => setShowBody(!showBody)}>
-            <span className="from text-truncate cursor-pointer">{item?.from}</span>
+            <span
+                className={`from text-truncate cursor-pointer ${
+                    sortedBy === "from" ? "sorted-column" : ""
+                }`}>
+                {item?.from}
+            </span>
             <div className="to cursor-pointer">
                 <span className="first-to text-truncate">
                     {`${item?.to?.[0]} ${item.to.length > 1 ? ", ..." : ""}`}
@@ -96,8 +115,14 @@ export default function ResultsTableRow(props) {
                     </div>
                 )}
             </div>
-            <span className="subject text-truncate cursor-pointer">{item?.subject}</span>
-            <span className="date text-bold cursor-pointer">
+            <span className="subject cursor-pointer text-truncate">
+                <span className="subject-text text-truncate">{item?.subject}</span>
+                {item?.attach && <ClipIcon className="clip-icon" width="20px" />}
+            </span>
+            <span
+                className={`date cursor-pointer ${
+                    sortedBy === "date" ? "sorted-column" : ""
+                }`}>
                 {formatDateTime(item?.date * 1000)}
             </span>
             {showBody && (

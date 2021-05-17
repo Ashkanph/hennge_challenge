@@ -18,19 +18,20 @@ const ResultsTableEl = styled.div`
         color: ${props => props.theme.onBackground};
         border-bottom: 1px solid ${props => props.theme.resultBorder};
 
-        .date {
+        .sorted-column {
+            font-weight: bold;
             color: ${props => props.theme.onBackground};
+        }
 
-            .sort-arrow-asc,
-            .sort-arrow-desc {
-                width: 12px;
-                height: 12px;
-                margin-left: 10px;
-            }
+        .sort-arrow-asc,
+        .sort-arrow-desc {
+            width: 12px;
+            height: 12px;
+            margin-left: 10px;
+        }
 
-            .sort-arrow-asc {
-                transform: scaleY(-1);
-            }
+        .sort-arrow-asc {
+            transform: scaleY(-1);
         }
 
         .from,
@@ -53,17 +54,30 @@ export default function ResultsTable(props) {
     const { data } = props;
     const [sortDirection, setSortDirection] = useState("desc");
     const [sortedData, setSortedData] = useState(null);
+    const [sortedBy, setSortedBy] = useState("date");
 
     useEffect(() => {
-        if (data) {
+        if (data && sortedBy === "date") {
+            setSortedData(sortDirection === "desc" ? data : data.reverse());
+        } else if (data) {
             setSortedData(sortDirection === "desc" ? data : data.reverse());
         }
     }, [data]);
 
-    const sortData = () => {
-        setSortDirection(sortDirection === "desc" ? "asc" : "desc");
+    const sortData = sortBy => {
         if (data) {
-            setSortedData(data.reverse());
+            if (sortBy === sortedBy) {
+                setSortDirection(sortDirection === "desc" ? "asc" : "desc");
+                setSortedData(data.reverse());
+            } else {
+                setSortDirection("desc");
+                setSortedBy(sortBy);
+                setSortedData(
+                    data.sort((a, b) =>
+                        sortBy === "from" ? a.from.localeCompare(b.from) : a.date > b.date
+                    )
+                );
+            }
         }
     };
 
@@ -71,11 +85,20 @@ export default function ResultsTable(props) {
         return null;
     }
 
+    const SortArrowEl = () => (
+        <img className={`sort-arrow-${sortDirection}`} src={sortArrow} alt="sort-arrow" />
+    );
+
     return (
         <ResultsTableEl>
             <div className="header text-capitalize">
-                <span className="from">
+                <span
+                    className={`from cursor-pointer ${
+                        sortedBy === "from" ? "sorted-column" : ""
+                    }`}
+                    onClick={() => sortData("from")}>
                     <FormattedMessage id="common.from" />
+                    {sortedBy === "from" && <SortArrowEl />}
                 </span>
                 <span className="to">
                     <FormattedMessage id="common.to" />
@@ -83,13 +106,13 @@ export default function ResultsTable(props) {
                 <span className="subject">
                     <FormattedMessage id="common.subject" />
                 </span>
-                <span className="date cursor-pointer" onClick={sortData}>
+                <span
+                    className={`date cursor-pointer ${
+                        sortedBy === "date" ? "sorted-column" : ""
+                    }`}
+                    onClick={() => sortData("date")}>
                     <FormattedMessage id="common.date" />
-                    <img
-                        className={`sort-arrow-${sortDirection}`}
-                        src={sortArrow}
-                        alt="sort-arrow"
-                    />
+                    {sortedBy === "date" && <SortArrowEl />}
                 </span>
             </div>
             {sortedData &&
@@ -98,6 +121,7 @@ export default function ResultsTable(props) {
                         className="mail-info"
                         key={`result-table-row-${index}`}
                         item={item}
+                        sortedBy={sortedBy}
                     />
                 ))}
         </ResultsTableEl>
