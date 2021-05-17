@@ -146,7 +146,7 @@ export default function ResultsTable(props) {
                 sortedData.map((item, index) => (
                     <ResultsTableRow
                         className="mail-info"
-                        key={`result-table-row-${index}`}
+                        key={`result-table-row-${item?.uid}`}
                         item={item}
                         sortedBy={sortedBy}
                     />
