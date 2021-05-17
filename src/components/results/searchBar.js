@@ -31,12 +31,14 @@ const SearchBarEl = styled.div`
             }
 
             .react-daterange-picker__wrapper {
+                margin-top: 7px;
                 border: none;
 
                 .react-daterange-picker__inputGroup,
                 .react-daterange-picker__range-divider {
                     font-size: 22px;
                 }
+
                 .react-daterange-picker__range-divider {
                     min-width: 16px;
                 }
@@ -51,6 +53,46 @@ const SearchBarEl = styled.div`
             background-color: ${props => props.theme.surface};
             border-top-right-radius: 8px;
             border-bottom-right-radius: 8px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .searchbar-left {
+            height: 50px;
+
+            .searchbar-rangepicker {
+                width: 250px;
+                padding: 0 10px;
+
+                .searchbar-callendar-icon {
+                    width: 25px;
+                    height: 25px;
+                    margin-right: 12px;
+                }
+
+                .react-daterange-picker__wrapper {
+                    margin-top: 6px !important;
+
+                    .react-daterange-picker__inputGroup__input {
+                        font-size: 18px !important;
+                        line-height: 22px;
+                    }
+
+                    .react-daterange-picker__inputGroup,
+                    .react-daterange-picker__range-divider {
+                        font-size: 18px;
+                    }
+                    .react-daterange-picker__range-divider {
+                        min-width: 8px;
+                    }
+                }
+            }
+
+            .searchbar-search-icon {
+                height: 50px;
+                width: 60px;
+                padding: 12px;
+            }
         }
     }
 `;

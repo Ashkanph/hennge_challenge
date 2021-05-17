@@ -6,8 +6,6 @@ import sortArrow from "../../static/images/icon_arrow01.svg";
 import ResultsTableRow from "./resultsTableRow";
 
 const ResultsTableEl = styled.div`
-    width: inherit;
-
     .mail-info,
     .header {
         font-size: 21px;
@@ -40,6 +38,10 @@ const ResultsTableEl = styled.div`
         .date {
             padding-right: 30px;
         }
+
+        .from {
+            padding-left: 15px;
+        }
     }
 
     .header {
@@ -47,6 +49,31 @@ const ResultsTableEl = styled.div`
         font-weight: bold;
         color: ${props => props.theme.resultsText};
         font-size: 19px;
+    }
+
+    @media (max-width: 769px) {
+        .header {
+            margin: 0 -1.5rem;
+            display: flex;
+            align-items: center;
+            line-height: 18px;
+            border-top: 1px solid ${props => props.theme.resultBorder};
+
+            .from,
+            .to,
+            .subject {
+                border-right: 1px solid ${props => props.theme.onBackground};
+                padding: 0 10px;
+            }
+
+            .from {
+                padding-left: 1.5rem;
+            }
+
+            .date {
+                padding-left: 10px;
+            }
+        }
     }
 `;
 

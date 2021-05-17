@@ -13,6 +13,10 @@ const ResultsCountEl = styled.div`
         font-size: 28px;
         margin: 0 5px;
     }
+
+    @media (max-width: 769px) {
+        border-bottom: none;
+    }
 `;
 
 export default function ResultsCount(props) {

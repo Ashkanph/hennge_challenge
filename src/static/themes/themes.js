@@ -8,6 +8,7 @@ const themes = {
         resultsText: "#666666",
         tags: "#888888",
         links: "#2c61dc",
+        openMailHeader: "#aaa",
     },
 };
 

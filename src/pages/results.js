@@ -10,6 +10,10 @@ const ResultsEl = styled.div`
     padding: 2rem 5rem;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.onBackground};
+
+    @media (max-width: 769px) {
+        padding: 2rem 1.5rem;
+    }
 `;
 
 export default function Results() {
