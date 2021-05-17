@@ -42,6 +42,10 @@ const ResultsTableEl = styled.div`
         .from {
             padding-left: 15px;
         }
+
+        @media (max-width: 1085px) {
+            grid-template-columns: 180px 170px auto 130px;
+        }
     }
 
     .header {

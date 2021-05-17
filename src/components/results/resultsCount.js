@@ -15,7 +15,8 @@ const ResultsCountEl = styled.div`
     }
 
     @media (max-width: 769px) {
-        border-bottom: none;
+        border-bottom: 1px solid
+            ${props => (props.count === 0 ? props.theme.resultBorder : "transparent")};
     }
 `;
 
@@ -23,7 +24,7 @@ export default function ResultsCount(props) {
     const { count } = props;
 
     return (
-        <ResultsCountEl>
+        <ResultsCountEl count={count}>
             <span className="text-capitalize">
                 <FormattedMessage id="common.results" />:
             </span>

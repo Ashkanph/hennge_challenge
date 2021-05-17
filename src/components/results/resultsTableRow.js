@@ -7,6 +7,8 @@ import mobileIcon from "../../static/images/icon_mail_sp.svg";
 import iconArrow2 from "../../static/images/icon_arrow02.svg";
 
 const ResultsTableRowEl = styled.div`
+    grid-template-areas: "from to subject date";
+
     .date {
         display: flex;
         align-items: center;
@@ -23,16 +25,10 @@ const ResultsTableRowEl = styled.div`
         }
     }
 
-    .mail-body {
-        grid-area: mail-body;
-    }
-
     .mobile-icon {
         grid-area: mobile-icon;
         display: none;
     }
-
-    grid-template-areas: "from to subject date";
 
     &.showbody {
         grid-template-areas:
@@ -42,6 +38,7 @@ const ResultsTableRowEl = styled.div`
         grid-template-rows: 50px auto;
 
         .mail-body {
+            grid-area: mail-body;
             background-color: ${props => props.theme.surface};
             border-top: 4px solid ${props => props.theme.resultBorder};
             color: ${props => props.theme.resultsText};
@@ -49,7 +46,8 @@ const ResultsTableRowEl = styled.div`
             max-height: 250px;
             display: flex;
             flex-direction: column;
-            overflow: scroll;
+            overflow-y: scroll;
+            height: auto !important;
 
             .mail-body-subject {
                 margin-bottom: 20px;
