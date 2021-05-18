@@ -11,14 +11,16 @@
 
 @font-face {
     font-family: "Helvetica Neue";
-    src: url("./static/fonts/HelveticaNeueLt.ttf");
+    src: url("./static/fonts/helvetica.woff") format("woff"),
+        url("./static/fonts/HelveticaNeueLt.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Helvetica Neue";
-    src: url("./static/fonts/HelveticaNeueBd.ttf");
+    src: url("./static/fonts/helveticaneue-bold.woff2") format("woff2"),
+        url("./static/fonts/HelveticaNeueBd.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
