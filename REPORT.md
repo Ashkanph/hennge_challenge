@@ -12,7 +12,7 @@ The steps resulted to the final SPA application:
 * Using Helvetica fonts (Couldn't purchase the font legally)
 * Adding [@wojtekmaj/react-daterange-picker](https://github.com/wojtekmaj/react-daterange-picker) for date range picker
 * Creating separate components for the page
-* Adding mock data file
+* Adding [mock data file](https://github.com/Ashkanph/hennge_challenge/blob/dev/src/static/mockData.js)
 * Adding function of the page and sorting (columns of date and from)
 * Make the page responsive
 * Creating the build version, Adding `IMPROVEMENTS.md` and `REPORT.md`.

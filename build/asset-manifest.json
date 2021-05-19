@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b0bd3a1c.chunk.css",
+    "main.js": "/static/js/main.ad1450f8.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.89d433e6.js",
+    "static/css/2.6f8c717e.chunk.css": "/static/css/2.6f8c717e.chunk.css",
+    "static/js/2.192c15a1.chunk.js": "/static/js/2.192c15a1.chunk.js",
+    "index.html": "/index.html",
+    "static/js/2.192c15a1.chunk.js.LICENSE.txt": "/static/js/2.192c15a1.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/helveticaneue-bold.a2983dbb.woff2",
+    "static/media/icon_arrow01.bcf7f3f4.svg": "/static/media/icon_arrow01.bcf7f3f4.svg",
+    "static/media/icon_arrow02.c127e32a.svg": "/static/media/icon_arrow02.c127e32a.svg",
+    "static/media/icon_calender.cf4746ba.svg": "/static/media/icon_calender.cf4746ba.svg",
+    "static/media/icon_mail_sp.03c39a6e.svg": "/static/media/icon_mail_sp.03c39a6e.svg",
+    "static/media/icon_search.ebe7f35f.svg": "/static/media/icon_search.ebe7f35f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.89d433e6.js",
+    "static/css/2.6f8c717e.chunk.css",
+    "static/js/2.192c15a1.chunk.js",
+    "static/css/main.b0bd3a1c.chunk.css",
+    "static/js/main.ad1450f8.chunk.js"
+  ]
+}
